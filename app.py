@@ -22,7 +22,7 @@ if __name__ == '__main__':
 ```
 @app.route('/tasks/<int:task_id>', methods=['DELETE'])
 def delete_task(task_id):
-    if 0 <= task_id < len(tasks):
-        deleted = tasks.pop(task_id)
-        return jsonify({"message": "Task deleted", "task": deleted})
-    return jsonify({"error": "Task not found"}), 404
+    if task_id < 0 or task_id >= len(tasks):
+        return jsonify({"error": "Invalid task ID"}), 400
+    deleted = tasks.pop(task_id)
+    return jsonify({"message": "Task deleted", "task": deleted})
