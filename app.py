@@ -7,9 +7,13 @@ tasks = []
 @app.route('/')
 def home():
     return jsonify({"message": "TaskManager API v1.0", "status": "running"})
-@app.route('/tasks', methods=['GET'])
+
+    @app.route('/tasks', methods=['GET'])
 def get_tasks():
-    return jsonify({"tasks": task})  # Error: 'task' no existe, debe ser 'tasks'
+    return jsonify({"tasks": tasks})  # Corregido
+# @app.route('/tasks', methods=['GET'])
+# def get_tasks():
+#     return jsonify({"tasks": task})  # Error: 'task' no existe, debe ser 'tasks'
 # @app.route('/tasks', methods=['GET'])
 # def get_tasks():
 #     return jsonify({"tasks": tasks})
